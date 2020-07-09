@@ -1,74 +1,51 @@
 # Getting Started #
 
-This will guide through the steps to install the App Sail CLI (command line interface) and push this repo to a new, live app
+These steps will get this sample application running for you using DigitalOcean.
 
-**Note: Following these steps will result in charges for the use of DigitalOcean Droplets**
+**Note: Following these steps will result in charges for the use of DigitalOcean services**
 
 ## Requirements
 
-* Docker must be [installed locally](https://docs.docker.com/install/) on your machine, unless you choose to build remotely via Github Actions (beyond the scope of this README)
 * You need a DigitalOcean account. If you don't already have one, you can sign up at https://cloud.digitalocean.com/registrations/new
     
+## Forking the Sample App Source Code
 
-## Installing App Sail ##
+To use all the features of App Platform, you need to be running against your own copy of this application. To make a copy, click the Fork button above and follow the on-screen instructions. In this case, you'll be forking this repo as a starting point for your own app (see [Github documentation](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) to learn more about forking repos.
 
-To install the App Sail CLI, visit https://cloud.digitalocean.com/appsail and choose to Create or Launch a new app. Follow the on-screen instructions for installing the CLI. 
-
-## Downloading the Sample App Source Code
-
-To download the demo app run in your terminal:
-
-	git clone https://github.com/digitalocean-appsail/sample-nginx.git
-	cd sample-nginx
+After forking the repo, you should now be viewing this README in your own github org (e.g. `https://github.com/<your-org>/sample-nginx`)
 
 ## Deploying the App ##
 
-	sail push
+1. Visit https://cloud.digitalocean.com/apps (if you're not logged in, you may see an error message. Visit https://cloud.digitalocean.com/login directly and authenticate, then try again)
+1. Click "Launch App" or "Create App"
+1. Choose GitHub and authenticate with your GitHub credentials.
+1. Under Repository, choose this repository (e.g. `<your-org>/sample-nginx`)
+1. On the next two screens, leave all the defaults unchanged.
+1. Click "Launch App"
+1. You should see a "Building..." progress indicator. And you can click "Deployments"→"Details" to see more details of the build.
+1. It can currently take 5-6 minutes to build this app, so please be patient. Live build logs are coming soon to provide much more feedback during deployments.
+1. Once the build completes successfully, click the "Live App" link in the header and you should see your running application in a new tab
 
-It will ask for an auth key if you haven't used the sail CLI before. Retrieve it from [the auth page](https://cloud.digitalocean.com/appsail/auth).
+## Making Changes to Your App ##
 
-Then it will ask how to configure the app.
-Answer the questions as follows:
+As long as you left the default Autodeploy option enabled when you first launched this app, you can now make code changes and see them automatically reflected in your live application. During these automatic deployments, your application will never pause or stop serving request because the App Platform offers zero-downtime deployments.
 
-    ✓ Who does this app belong to: <choose your personal account or team>
-    ✓ What should this app be called: sample-nginx
-    Let's configure your app for deployment:
-    ✓ Choose your configuration preference: Manual...
-    ✓ Which Dockerfile: Dockerfile
-    ✓ Port to forward requests to: 80
-    ✓ What command will run the app:
-    ✓ Do you need any background workers: No
-    ✓ Do you need a database: No
+Here's an example code change you can make for this app:
+1. (coming soon)
 
-After that, it will go through a deploy process. Once it's done, you can open the live app or administration dashboard by following the links provided by the App Sail CLI once the push is completed.
+## Learn More ##
 
-## Viewing Application Logs ##
+You can learn more about the App Platform and how to manage and update your application at https://www.digitalocean.com/docs/apps/.
 
-You can view your application's logs by following these steps:
-1. Visit the app dashboard at https://cloud.digitalocean.com/appsail
-1. Navigate to the sample-nginx app
-1. Click "Logs"
-
-Alternatively, from your terminal while inside your top level application directory (e.g. sample-nginx), run:
-
-	sail get logs --recent
-	
-Or to see a live stream of your logs, run:
-
-	sail get logs
-
-Then visit your live app in your browser to generate some log output (which you'll see in your terminal). Use ctrl-c to stop viewing your log stream in your terminal.
-	
-To learn more about this command, run `sail get logs -h`
 
 ## Deleting the App #
 
 When you no longer need this sample application running live, you can delete it by following these steps:
-1. Visit the app dashboard at https://cloud.digitalocean.com/appsail
+1. Visit the Apps control panel at https://cloud.digitalocean.com/apps
 1. Navigate to the sample-nginx app
-1. Choose "App Config"->"Show More"
-1. Select "Delete", type your app's name, and click "Delete App".
+1. Choose "Settings"->"Destroy"
 
-This will delete the app and destroy any underlying DigitalOcean Droplets. 
+This will delete the app and destroy any underlying DigitalOcean resources
 
-**Note: If you don't delete your app, charges for the use of DigitalOcean Droplets will continue to accrue. Also, even if you delete your app, a new push to your sample-nginx repo on Github will trigger a new deploy which will result in DigitalOcean charges.**
+**Note: If you don't delete your app, charges for the use of DigitalOcean services will continue to accrue.**
+
